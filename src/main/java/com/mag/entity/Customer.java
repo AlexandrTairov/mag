@@ -22,4 +22,7 @@ public class Customer {
 
     @Column(name = "NAME")
     private String name;
+
+    @Column(name = "EMAIL")
+    private String email;
 }
