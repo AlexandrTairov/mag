@@ -35,4 +35,12 @@ public class CustomerService {
             return null;
         }
     }
+
+    public void deleteCustomerById(Long id) {
+        try {
+            customerDAO.deleteById(id);
+        } catch (Exception ex) {
+            System.out.println("Can`t delete");
+        }
+    }
 }
