@@ -1,7 +1,7 @@
 CREATE TABLE CUSTOMER (
-    ID INTEGER,
-    NAME TEXT,
-    EMAIL TEXT
+                          ID SERIAL CONSTRAINT INTEGER PRIMARY KEY ,
+                          NAME TEXT,
+                          EMAIL TEXT
 );
 
 CREATE TABLE CUSTOMER_ORDER (
