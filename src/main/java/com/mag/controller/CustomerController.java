@@ -61,4 +61,15 @@ public class CustomerController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<HttpStatus> updateCustomerById(@PathVariable Long id,
+                                                         @RequestBody Customer customer) {
+        try {
+            customerService.updateCustomerById(id, customer);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } catch (Exception exception) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+    }
 }

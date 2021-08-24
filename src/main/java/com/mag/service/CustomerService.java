@@ -43,4 +43,19 @@ public class CustomerService {
             System.out.println("Can`t delete");
         }
     }
+
+    public void updateCustomerById(Long id, Customer customer) {
+        try {
+            Customer existCustomer = customerDAO.findCustomerById(id);
+            if (existCustomer == null) {
+                throw new NullPointerException();
+            } else {
+                existCustomer.setName(customer.getName());
+                existCustomer.setEmail(customer.getEmail());
+                customerDAO.save(existCustomer);
+            }
+        } catch (Exception exception) {
+            System.out.println("Error");
+        }
+    }
 }
