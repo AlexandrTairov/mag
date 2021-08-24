@@ -41,10 +41,10 @@ public class CustomerController {
     @PostMapping(value = "/create")
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
         try {
-
-//            customerService.save(customer);
-//            Customer createdCustomer = customerRepository.createCustomer(customer);
-//            return new ResponseEntity<>(createdCustomer, HttpStatus.OK);
+            Customer createdCustomer = customerService.createCustomer(customer);
+            if (createdCustomer == null) {
+                throw new NullPointerException();
+            }
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception ex) {
             System.out.println("Something went wrong! " + ex.getMessage());

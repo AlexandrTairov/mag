@@ -26,4 +26,13 @@ public class CustomerService {
             return customerDAO.findCustomerById(id);
         } else return null;
     }
+
+    public Customer createCustomer(Customer customer) {
+        try {
+            customerDAO.save(customer);
+            return customer;
+        } catch (Exception e) {
+            return null;
+        }
+    }
 }
