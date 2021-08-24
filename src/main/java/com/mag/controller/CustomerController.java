@@ -1,11 +1,15 @@
 package com.mag.controller;
 
 import com.mag.entity.Customer;
+import com.mag.entity.CustomerWithOrder;
+import com.mag.entity.Order;
 import com.mag.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -36,6 +40,16 @@ public class CustomerController {
     @GetMapping(value = "/getAll")
     public List<Customer> getAllCustomers() {
         return customerService.findAllCustomers();
+    }
+
+    @GetMapping(value = "/WithOrder/{id}")
+    public ResponseEntity<CustomerWithOrder> getCustomerWithOrderById(@PathVariable Long id) {
+        Customer customer = customerService.findCustomerById(id);
+        RestTemplate restTemplate = new RestTemplate();
+        String uri = "http://localhost:8080/order/customer/" + customer.getId();
+        Order order = restTemplate.getForObject(uri, Order.class);
+        CustomerWithOrder response = new CustomerWithOrder(customer, order);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @PostMapping(value = "/create")

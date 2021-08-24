@@ -36,8 +36,13 @@ public class OrderController {
     }
 
     @GetMapping(value = "/getAll")
-    public List<Order> getAllCustomers() {
+    public List<Order> getAllOrders() {
         return orderService.findAllOrders();
+    }
+
+    @GetMapping(value = "/customer/{customer_id}")
+    public Order getOrderByCustomerId(@PathVariable Long customer_id) {
+        return orderService.findOrderByCustomerid(customer_id);
     }
 
     @PostMapping(value = "/create")

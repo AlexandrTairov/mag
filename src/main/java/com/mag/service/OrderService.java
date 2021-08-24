@@ -57,4 +57,17 @@ public class OrderService {
             System.out.println("Error");
         }
     }
+
+    public Order findOrderByCustomerid(Long customer_id) {
+        try {
+            Order order = orderDAO.findOrderByCustomerId(customer_id);
+            if (order == null) {
+                throw new NullPointerException();
+            }
+            return order;
+        }  catch (Exception exception) {
+            System.out.println("Not found");
+            return null;
+        }
+    }
 }

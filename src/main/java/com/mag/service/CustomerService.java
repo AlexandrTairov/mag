@@ -2,6 +2,7 @@ package com.mag.service;
 
 import com.mag.dao.CustomerDAO;
 import com.mag.entity.Customer;
+import com.mag.entity.Order;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
