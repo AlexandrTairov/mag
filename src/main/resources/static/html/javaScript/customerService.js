@@ -37,22 +37,34 @@ function function3() { // create
         type: 'POST',
         data:  JSON.stringify(customer), //if no JSON is available use the one from https://github.com/douglascrockford/JSON-js
         success: function(data) {
-            console.log("Here ");
+            // console.log("Here ");
             // $("#updateInboxView").html(data);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(jqXHR + " : " + textStatus + " : " + errorThrown);
         }
     });
-    // const url = "http://localhost:8080/customer/create";
-    // fetch(url)
-    //     .then(customerName, customerEmail)
-    //     .then(response => response.json())
-    //     .then(data => console.log(data))
 }
 
 function function4() { //delete
-
+    let id;
+    if (document.getElementById('customerId3') != null) {
+        id = document.getElementById("customerId3").value;
+    }
+    $.ajax({
+        // dataType: 'json',
+        // contentType: "application/json",
+        url: "http://localhost:8080/customer/" + id,
+        type: 'DELETE',
+        success: function() {
+            console.log("Success deleted")
+            // console.log("Here ");
+            // $("#updateInboxView").html(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(jqXHR + " : " + textStatus + " : " + errorThrown);
+        }
+    });
 }
 
 function function5() { //update
