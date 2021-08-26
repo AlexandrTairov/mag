@@ -28,7 +28,7 @@ function function3() { // create
         email: customerEmail
     };
 
-    console.log(JSON.stringify(customer))
+    // alert(JSON.stringify(student))
 
     $.ajax({
         dataType: 'json',

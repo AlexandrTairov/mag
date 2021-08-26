@@ -59,7 +59,7 @@ public class CustomerController {
             if (createdCustomer == null) {
                 throw new NullPointerException();
             }
-            return new ResponseEntity<>(HttpStatus.CREATED);
+            return new ResponseEntity<>(createdCustomer, HttpStatus.CREATED);
         } catch (Exception ex) {
             System.out.println("Something went wrong! " + ex.getMessage());
             return new ResponseEntity<>(HttpStatus.CONFLICT);
