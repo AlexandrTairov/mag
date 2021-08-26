@@ -8,4 +8,5 @@ function function1() {
         .then(response => response.json())
         .then(data => console.log(data))
     let win = window.open("customer.html", "Customer");
+    win.username = 'username';
 }
