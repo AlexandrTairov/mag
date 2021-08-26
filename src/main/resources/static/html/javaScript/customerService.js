@@ -23,14 +23,21 @@ function function3() { // create
         customerEmail = document.getElementById("customerEmail1").value;
     }
 
+    let customer = {
+        name: customerName,
+        email: customerEmail
+    };
+
+    console.log(JSON.stringify(customer))
+
     $.ajax({
         dataType: 'json',
         contentType: "application/json",
         url: "http://localhost:8080/customer/create",
         type: 'POST',
-        data:  JSON.stringify({name: customerName, email: customerEmail}), //if no JSON is available use the one from https://github.com/douglascrockford/JSON-js
+        data:  JSON.stringify(customer), //if no JSON is available use the one from https://github.com/douglascrockford/JSON-js
         success: function(data) {
-            console.log("Here ", data);
+            console.log("Here ");
             // $("#updateInboxView").html(data);
         },
         error: function (jqXHR, textStatus, errorThrown) {
