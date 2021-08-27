@@ -77,11 +77,11 @@ public class CustomerController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<HttpStatus> updateCustomerById(@PathVariable Long id,
+    public ResponseEntity<Customer> updateCustomerById(@PathVariable Long id,
                                                          @RequestBody Customer customer) {
         try {
             customerService.updateCustomerById(id, customer);
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(customer, HttpStatus.OK);
         } catch (Exception exception) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }

@@ -27,9 +27,6 @@ function function3() { // create
         name: customerName,
         email: customerEmail
     };
-
-    // alert(JSON.stringify(student))
-
     $.ajax({
         dataType: 'json',
         contentType: "application/json",
@@ -68,5 +65,37 @@ function function4() { //delete
 }
 
 function function5() { //update
+    let customerId, customerName, customerEmail;
+    if (document.getElementById('customerId4') != null) {
+        customerId = document.getElementById("customerId4").value;
+    }
+    if (document.getElementById('customerName2') != null) {
+        customerName = document.getElementById("customerName2").value;
+    }
+    if (document.getElementById('customerEmail2') != null) {
+        customerEmail = document.getElementById("customerEmail2").value;
+    }
 
+    let customer = {
+        id: customerId,
+        name: customerName,
+        email: customerEmail
+    };
+
+    // alert(JSON.stringify(student))
+
+    $.ajax({
+        dataType: 'json',
+        contentType: "application/json",
+        url: "http://localhost:8080/customer/" + customerId,
+        type: 'PUT',
+        data:  JSON.stringify(customer), //if no JSON is available use the one from https://github.com/douglascrockford/JSON-js
+        success: function(data) {
+            console.log("Success update");
+            // $("#updateInboxView").html(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(jqXHR + " : " + textStatus + " : " + errorThrown);
+        }
+    });
 }
