@@ -9,3 +9,16 @@ CREATE TABLE CUSTOMER_ORDER (
     DESCRIPTION TEXT,
     CUSTOMER_ID INTEGER
 );
+
+create table file_db
+(
+    id serial not null,
+    file varchar
+);
+
+create unique index file_db_id_uindex
+    on file_db (id);
+
+alter table file_db
+    add constraint file_db_pk
+        primary key (id);
