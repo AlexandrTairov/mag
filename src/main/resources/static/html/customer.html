@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Customer</title>
-    <script src="javaScript/customer.js" type="text/javascript">
-        console.log("Hello");
-        var element = document.getElementById('customerName');
-        element.value = "User1";
-    </script>
 </head>
 <body>
-<p id="customerName">
-    Hello
-</p>
-<p id="customerEmail">
-    Email hello
-</p>
+<script type="text/javascript">
+    let p1 = document.createElement("div");
+    p1.innerHTML = "<p>" + localStorage.getItem("name") + "</p>";
+    let p2 = document.createElement("div")
+    p2.innerHTML = "<p>" + localStorage.getItem("email") + "</p>";
+
+    let customerName = document.getElementById("customerName");
+    document.body.insertBefore(p1, customerName);
+    let customerEmail = document.getElementById("customerEmail");
+    document.body.insertBefore(p2, customerEmail);
+    // console.log(localStorage.getItem("data"));
+
+</script>
+<div id="customerName">
+
+</div>
+<div id="customerEmail">
+
+</div>
 </body>
 </html>

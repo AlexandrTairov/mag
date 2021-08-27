@@ -3,11 +3,20 @@ function function1() { // get by id
     if (document.getElementById('customerId1') != null) {
         id = document.getElementById("customerId1").value;
     }
-    const url = "http://localhost:8080/customer/" + id;
-    fetch(url)
-        .then(response => response.json())
-        .then(data => console.log(data))
-    let win = window.open("customer.html", "Customer");
+    $.ajax({
+        dataType: 'json',
+        contentType: "application/json",
+        url: "http://localhost:8080/customer/" + id,
+        type: 'GET',
+        success: function(data) {
+            localStorage.setItem("name", data.name);
+            localStorage.setItem("email", data.email);
+            win = window.open("customer.html", "Customer");
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(jqXHR + " : " + textStatus + " : " + errorThrown);
+        }
+    });
 }
 
 function function2() { //getAll
@@ -32,10 +41,8 @@ function function3() { // create
         contentType: "application/json",
         url: "http://localhost:8080/customer/create",
         type: 'POST',
-        data:  JSON.stringify(customer), //if no JSON is available use the one from https://github.com/douglascrockford/JSON-js
+        data:  JSON.stringify(customer),
         success: function(data) {
-            // console.log("Here ");
-            // $("#updateInboxView").html(data);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(jqXHR + " : " + textStatus + " : " + errorThrown);
@@ -49,14 +56,10 @@ function function4() { //delete
         id = document.getElementById("customerId3").value;
     }
     $.ajax({
-        // dataType: 'json',
-        // contentType: "application/json",
         url: "http://localhost:8080/customer/" + id,
         type: 'DELETE',
         success: function() {
             console.log("Success deleted")
-            // console.log("Here ");
-            // $("#updateInboxView").html(data);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(jqXHR + " : " + textStatus + " : " + errorThrown);
@@ -81,8 +84,6 @@ function function5() { //update
         name: customerName,
         email: customerEmail
     };
-
-    // alert(JSON.stringify(student))
 
     $.ajax({
         dataType: 'json',
