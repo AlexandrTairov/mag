@@ -1,0 +1,15 @@
+.customerName {
+    font-weight: 400;
+    margin-top: 70px;
+    line-height: 30px;
+    font-size: 200px;
+    letter-spacing: 0.4px;
+}
+
+.customerEmail {
+    font-weight: 400;
+    margin-top: 70px;
+    line-height: 30px;
+    font-size: 140px;
+    letter-spacing: 0.4px;
+}
