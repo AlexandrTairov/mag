@@ -3,34 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <title>Customers</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/owl.theme.css" rel="stylesheet">
+    <link href="css/magnific-popup.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/responsive.css" rel="stylesheet">
+
+    <!--fonts google-->
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
 </head>
 <body>
 <script type="text/javascript">
     let p1Array = [];
     let p2Array = [];
     let count = localStorage.getItem("count");
-    for (let i = 0; i < count; i ++) {
+    for (let i = 0; i < count; i++) {
         p1Array[i] = document.createElement("div");
-        p1Array[i].innerHTML = "<p>" + localStorage.getItem("name"+i) + "</p>";
+        p1Array[i].innerHTML = "<p class=\"content-detail\"><span>" + localStorage.getItem("name" + i) + "</span></p>";
 
         p2Array[i] = document.createElement("div");
-        p2Array[i].innerHTML = "<p><b>" + localStorage.getItem("email"+i) + "</b></p>";
+        p2Array[i].innerHTML = "<h3 class=\"title-small\"><span>" + localStorage.getItem("email" + i) + "</span></h3>";
 
         let customerName = document.getElementById("customerName");
         document.body.insertBefore(p1Array[i], customerName);
         let customerEmail = document.getElementById("customerEmail");
         document.body.insertBefore(p2Array[i], customerEmail);
     }
-
-
-    // console.log(localStorage.getItem("data"));
-
 </script>
-<div id="customerName">
+<script src="javaScript/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="javaScript/jquery.appear.js" type="text/javascript"></script>
+<script src="javaScript/bootstrap.min.js" type="text/javascript"></script>
+<script src="javaScript/classie.js" type="text/javascript"></script>
+<script src="javaScript/owl.carousel.min.js" type="text/javascript"></script>
+<script src="javaScript/jquery.magnific-popup.min.js" type="text/javascript"></script>
+<script src="javaScript/masonry.pkgd.min.js" type="text/javascript"></script>
+<script src="javaScript/masonry.js" type="text/javascript"></script>
+<script src="javaScript/smooth-scroll.min.js" type="text/javascript"></script>
+<script src="javaScript/typed.js" type="text/javascript"></script>
+<script src="javaScript/main.js" type="text/javascript"></script>
 
-</div>
-<div id="customerEmail">
+<section class="grey-bg mar-tm-10" id="work">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <p class="content-detail">
+                    <div id="customerName" class="customerName">
+                    </div>
+                    <div id="customerEmail" class="customerEmail">
+                    </div>
+                </p>
+            </div>
 
-</div>
+        </div>
+    </div>
+</section>
+
 </body>
 </html>

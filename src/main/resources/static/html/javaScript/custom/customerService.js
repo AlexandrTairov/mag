@@ -28,7 +28,6 @@ function function2() { //getAll
         success: function(data) {
             let count = data.length;
             localStorage.setItem("count", count);
-            // console.log(data[0].name);
             for (let i = 0; i < count; i ++) {
                 localStorage.setItem("name" + i, data[i].name);
                 localStorage.setItem("email" + i, data[i].email);
