@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customers</title>
+</head>
+<body>
+<script type="text/javascript">
+    let p1Array = [];
+    let p2Array = [];
+    let count = localStorage.getItem("count");
+    for (let i = 0; i < count; i ++) {
+        p1Array[i] = document.createElement("div");
+        p1Array[i].innerHTML = "<p>" + localStorage.getItem("name"+i) + "</p>";
+
+        p2Array[i] = document.createElement("div");
+        p2Array[i].innerHTML = "<p><b>" + localStorage.getItem("email"+i) + "</b></p>";
+
+        let customerName = document.getElementById("customerName");
+        document.body.insertBefore(p1Array[i], customerName);
+        let customerEmail = document.getElementById("customerEmail");
+        document.body.insertBefore(p2Array[i], customerEmail);
+    }
+
+
+    // console.log(localStorage.getItem("data"));
+
+</script>
+<div id="customerName">
+
+</div>
+<div id="customerEmail">
+
+</div>
+</body>
+</html>

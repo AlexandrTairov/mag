@@ -20,7 +20,25 @@ function function1() { // get by id
 }
 
 function function2() { //getAll
-
+    $.ajax({
+        dataType: 'json',
+        contentType: "application/json",
+        url: "http://localhost:8080/customer/getAll",
+        type: 'GET',
+        success: function(data) {
+            let count = data.length;
+            localStorage.setItem("count", count);
+            // console.log(data[0].name);
+            for (let i = 0; i < count; i ++) {
+                localStorage.setItem("name" + i, data[i].name);
+                localStorage.setItem("email" + i, data[i].email);
+            }
+            win = window.open("customers.html", "Customers");
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(jqXHR + " : " + textStatus + " : " + errorThrown);
+        }
+    });
 }
 
 function function3() { // create
